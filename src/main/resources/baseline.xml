@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog dbchangelog-3.5.xsd">
+
+    <changeSet author="xupanpan (generated)" id="1511684238660-1">
+        <createTable tableName="user" remarks="管理员信息">
+            <column autoIncrement="true" name="user_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="mobile" remarks="手机号" type="VARCHAR(20)"/>
+            <column name="password" remarks="登陆密码" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="org_id" remarks="企业ID" type="INT"/>
+            <column defaultValueNumeric="1" name="status" remarks="管理员状态：(0 可用，1 已锁定, 2 不可用)" type="INT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_time" remarks="注册时间" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

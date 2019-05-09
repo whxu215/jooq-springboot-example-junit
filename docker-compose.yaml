@@ -1,0 +1,16 @@
+version: "2"
+services:
+  mysql-db:
+    image: percona/percona-server:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=1q2w3e4r5t
+      - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./ext/mysql.conf.d/my.cnf:/etc/my.cnf
+      - ./tmp:/var/lib/mysql
+    tmpfs:
+      - /tmp
+    mem_limit: 256m
+    ports:
+      - 3320:3306

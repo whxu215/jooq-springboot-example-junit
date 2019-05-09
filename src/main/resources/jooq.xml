@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+  <jdbc>
+    <driver>com.mysql.jdbc.Driver</driver>
+    <url>jdbc:mysql://localhost:3320/test?characterEncoding=UTF-8</url>
+    <user>root</user>
+    <password>1q2w3e4r5t</password>
+  </jdbc>
+  <generator>
+    <name>org.jooq.util.JavaGenerator</name>
+    <database>
+      <name>org.jooq.util.mysql.MySQLDatabase</name>
+      <inputSchema>test</inputSchema>
+      <includes>.*</includes>
+      <excludes>Database*</excludes>
+    </database>
+    <generate>
+      <daos>true</daos>
+      <pojos>true</pojos>
+      <javaTimeTypes>true</javaTimeTypes>
+      <springAnnotations>true</springAnnotations>
+    </generate>
+    <target>
+      <packageName>com.github.jooq.example.gen</packageName>
+      <directory>src/main/java</directory>
+    </target>
+  </generator>
+</configuration>
