@@ -5,6 +5,7 @@ import com.github.jooq.example.data.ApiRetCode;
 import com.github.jooq.example.gen.tables.records.UserRecord;
 import com.github.jooq.example.proto.RegisterProto;
 import com.github.jooq.example.util.PasswordUtil;
+import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,10 +16,12 @@ import org.springframework.util.StringUtils;
  * @date 2019/05/09
  */
 @Service
-public class RegisterService {
+public class RegisterService extends BaseService {
+
     private UserService userService;
 
-    public RegisterService(UserService userService) {
+    public RegisterService(UserService userService, DSLContext dslContext) {
+        super(dslContext);
         this.userService = userService;
     }
 
@@ -42,7 +45,7 @@ public class RegisterService {
         }
         UserRecord user = new UserRecord();
         user.setMobile(registerReq.getUsername());
-        user.setPassword(registerReq.getPassword());
+        user.setPassword(PasswordUtil.getSha1Password(registerReq.getPassword()));
 
         userService.createUser(user);
         return ApiResponse.success("注册成功");

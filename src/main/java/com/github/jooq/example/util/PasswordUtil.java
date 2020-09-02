@@ -17,4 +17,14 @@ public class PasswordUtil {
     public static boolean isValidShortPassword(String password) {
         return Pattern.matches("\\d{6}", password);
     }
+
+    /**
+     * SHA1 password
+     * @param password
+     * @return
+     */
+    public static String getSha1Password(String password) {
+        String userPassword = String.format("%s--%s--", Constants.SHA1_SECRET_KEY, password);
+        return SHA1Util.sha1Hex(userPassword);
+    }
 }

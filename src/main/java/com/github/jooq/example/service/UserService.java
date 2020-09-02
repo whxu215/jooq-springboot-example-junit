@@ -7,11 +7,16 @@ import com.github.jooq.example.gen.tables.pojos.User;
 import com.github.jooq.example.gen.tables.records.UserRecord;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.jooq.DSLContext;
 import org.jooq.SelectConditionStep;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService extends BaseService {
+  public UserService(DSLContext dslContext) {
+    super(dslContext);
+  }
 
   public User createUser(UserRecord user) {
     UserRecord newUser = dslContext.insertInto(USER)
@@ -19,7 +24,7 @@ public class UserService extends BaseService {
         .set(USER.PASSWORD, user.getPassword())
         .set(USER.ORG_ID, 1)
         .set(USER.STATUS, 1)
-        .set(USER.CREATE_TIME, LocalDateTime.now())
+        .set(USER.CREATE_TIME, user.getCreateTime())
         .returning(USER.USER_ID)
         .fetchOne();
     user.setUserId(newUser.getUserId());
@@ -28,7 +33,7 @@ public class UserService extends BaseService {
 
   public List<User> findByMobile(String mobile) {
     return dslContext.selectFrom(USER).where(
-        USER.MOBILE.eq(mobile)).fetch().map(f -> f.into(User.class));
+        USER.MOBILE.like("%" + mobile + "%")).fetch().map(f -> f.into(User.class));
   }
 
   public Page<List<User>> findByMobileWithPage(String mobile, int currentPage, int pageSize) {

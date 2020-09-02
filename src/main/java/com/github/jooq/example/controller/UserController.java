@@ -1,9 +1,11 @@
 package com.github.jooq.example.controller;
 
+import com.github.jooq.example.data.ApiResponse;
 import com.github.jooq.example.data.Page;
 import com.github.jooq.example.gen.tables.pojos.User;
 import com.github.jooq.example.gen.tables.records.UserRecord;
 import com.github.jooq.example.proto.RegisterProto.RegisterReq;
+import com.github.jooq.example.service.RegisterService;
 import com.github.jooq.example.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,14 +27,17 @@ public class UserController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private RegisterService registerService;
+
   @ApiOperation("注册")
   @PostMapping("/register")
-  public User register(@RequestBody RegisterReq registerReq) {
+  public ApiResponse<String> register(@RequestBody RegisterReq registerReq) {
     UserRecord user = new UserRecord();
     user.setMobile(registerReq.getUsername());
     user.setPassword(registerReq.getPassword());
 
-    return userService.createUser(user);
+    return registerService.register(registerReq);
   }
 
   @ApiOperation("查询")

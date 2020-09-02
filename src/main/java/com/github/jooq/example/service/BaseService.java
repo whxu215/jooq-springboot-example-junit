@@ -11,9 +11,11 @@ import org.jooq.SelectConditionStep;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BaseService {
-
-  @Autowired
   protected DSLContext dslContext;
+
+  protected BaseService(DSLContext dslContext) {
+    this.dslContext = dslContext;
+  }
 
   public <R1 extends Record> Page<List<R1>> selectPage(
       SelectConditionStep<R1> conditionStep, int currentPage,

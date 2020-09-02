@@ -14,3 +14,10 @@ services:
     mem_limit: 256m
     ports:
       - 3320:3306
+
+
+
+  redis:
+    image: redis:3.2
+    ports:
+      - 6379:6379

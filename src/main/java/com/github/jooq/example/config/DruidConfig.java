@@ -23,7 +23,7 @@ public class DruidConfig {
   }
 
   @Bean
-  @ConfigurationProperties("spring.datasource.druid.filter.wall")
+  @ConfigurationProperties("util.datasource.druid.filter.wall")
   public WallConfig wallConfig() {
     return new WallConfig();
   }

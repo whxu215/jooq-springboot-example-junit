@@ -1,6 +1,5 @@
-package com.github.jooq.example.spring;
+package com.github.jooq.example.util;
 
-import com.github.jooq.example.util.PasswordUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
