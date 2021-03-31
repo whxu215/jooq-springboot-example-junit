@@ -7,9 +7,9 @@
     <password>1q2w3e4r5t</password>
   </jdbc>
   <generator>
-    <name>org.jooq.util.JavaGenerator</name>
+    <name>org.jooq.codegen.JavaGenerator</name>
     <database>
-      <name>org.jooq.util.mysql.MySQLDatabase</name>
+      <name>org.jooq.meta.mysql.MySQLDatabase</name>
       <inputSchema>test</inputSchema>
       <includes>.*</includes>
       <excludes>Database*</excludes>

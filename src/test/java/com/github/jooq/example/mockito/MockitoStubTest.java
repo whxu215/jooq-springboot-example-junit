@@ -1,11 +1,13 @@
 package com.github.jooq.example.mockito;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 import java.util.Arrays;
@@ -33,7 +35,7 @@ public class MockitoStubTest {
 
         //stubbing
         when(mockedList.get(0)).thenReturn("first");
-        when(mockedList.get(1)).thenThrow(new RuntimeException());
+//        when(mockedList.get(1)).thenThrow(new RuntimeException());
 
         //following prints "first"
         Assert.assertThat(mockedList.get(0), is("first"));

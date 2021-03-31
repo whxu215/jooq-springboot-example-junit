@@ -37,11 +37,6 @@ public class MockitoArgumentMatchersTest {
     }
 
     private ArgumentMatcher<String> validStringMatcher() {
-        return new ArgumentMatcher<String>() {
-            @Override
-            public boolean matches(Object argument) {
-                return ((String) argument).startsWith("test");
-            }
-        };
+        return argument -> argument.startsWith("test");
     }
 }

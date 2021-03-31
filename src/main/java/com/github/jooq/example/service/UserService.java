@@ -1,16 +1,15 @@
 package com.github.jooq.example.service;
 
-import static com.github.jooq.example.gen.tables.User.USER;
-
 import com.github.jooq.example.data.Page;
 import com.github.jooq.example.gen.tables.pojos.User;
 import com.github.jooq.example.gen.tables.records.UserRecord;
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.jooq.DSLContext;
 import org.jooq.SelectConditionStep;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import static com.github.jooq.example.gen.tables.User.USER;
 
 @Service
 public class UserService extends BaseService {

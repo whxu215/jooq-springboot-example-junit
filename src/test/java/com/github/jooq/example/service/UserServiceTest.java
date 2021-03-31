@@ -47,6 +47,7 @@ public class UserServiceTest {
         when(insertSetStep.set(USER.MOBILE, userRecord.getMobile())).thenReturn(moreStep);
         when(moreStep.set(any(TableField.class), anyString())).thenReturn(moreStep);
         when(moreStep.set(any(TableField.class), anyInt())).thenReturn(moreStep);
+        when(moreStep.set(any(TableField.class), any(LocalDateTime.class))).thenReturn(moreStep);
 
 
         InsertResultStep<UserRecord> insertResultStep = mock(InsertResultStep.class);

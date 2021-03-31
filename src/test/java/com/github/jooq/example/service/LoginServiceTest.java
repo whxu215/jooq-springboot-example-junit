@@ -40,7 +40,8 @@ public class LoginServiceTest {
     /**
      * Exception Test
      * Mock Private
-     * 支付密码错误时抛异常
+     * 输入：错误登录密码
+     * 期望：AppException(ApiRetCode.PASSWORD_ERROR)
      */
     @Test
     public void should_throw_exception_with_wrong_password() throws Exception {
@@ -62,7 +63,8 @@ public class LoginServiceTest {
     /**
      * Exception Test
      * Mock Private
-     * 支付密码错误时记录登录错误次数
+     * 输入：错误登录密码
+     * 期望：记录登录错误次数
      */
     @Test
     public void should_incr_login_error_times_with_wrong_password() throws Exception {
