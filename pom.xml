@@ -20,7 +20,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
-    <mysql.version>5.1.40</mysql.version>
+    <mysql.version>8.0.16</mysql.version>
     <jooq.version>3.12.1</jooq.version>
     <powermock.version>2.0.2</powermock.version>
   </properties>
